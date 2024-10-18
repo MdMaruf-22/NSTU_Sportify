@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'nstu_sportify.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Use MySQL backend
+        'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'nstu_sportify',  # The name of your database in MySQL
         'USER': 'root',  # MySQL username (default is 'root' for XAMPP)
-        'PASSWORD': '',  # Your MySQL root password (leave it blank if no password is set)
-        'HOST': 'localhost',  # The MySQL server (localhost for XAMPP)
-        'PORT': '3306',  # The port for MySQL (default is 3306 for XAMPP)
+        'PASSWORD': '',  # MySQL root password 
+        'HOST': 'localhost',  
+        'PORT': '3306',
     }
 }
 
