@@ -89,3 +89,54 @@ class Matchdetails(models.Model):
     
     def __str__(self):
         return f"Match {self.match_id} on {self.date} on {self.location}"
+    
+    
+# event, player, team, representative, department
+class Department(models.Model):
+    department_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"Department: {self.name}"
+
+
+class Representative(models.Model):
+    representative_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Representative: {self.name}, Department: {self.department.name}"
+
+
+class Team(models.Model):
+    team_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    coach = models.CharField(max_length=255)
+    representative = models.ForeignKey(Representative, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Team: {self.name}, Coach: {self.coach}"
+
+
+class Player(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    age = models.IntegerField()
+    position = models.CharField(max_length=100)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Player: {self.name}, Age: {self.age}, Team: {self.team.name}, Position: {self.position}"
+
+
+class Event(models.Model):
+    event_id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    def __str__(self):
+        return f"Event: {self.title}, Start Date: {self.start_date}, End Date: {self.end_date}"
