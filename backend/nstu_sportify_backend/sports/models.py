@@ -48,3 +48,44 @@ class Notice(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Chess(models.Model):
+    chess_match_id = models.AutoField(primary_key=True)
+    moves = models.IntegerField()  
+    time_control = models.CharField(max_length=50) 
+    result = models.CharField(max_length=50)  
+    match = models.ForeignKey(Matchdetails, on_delete=models.CASCADE)  
+    def __str__(self):
+        return f"Chess Match {self.chess_match_id}"
+class Football(models.Model):
+    football_match_id = models.AutoField(primary_key=True)
+    goals_team1 = models.IntegerField()  
+    goals_team2 = models.IntegerField()  
+    duration = models.IntegerField()  
+    match = models.ForeignKey(Matchdetails, on_delete=models.CASCADE)  
+    def __str__(self):
+        return f"Football Match {self.football_match_id}"
+
+class Handball(models.Model):
+    handball_match_id = models.AutoField(primary_key=True)
+    goals_team1 = models.IntegerField()  
+    goals_team2 = models.IntegerField()  
+    duration = models.IntegerField()  
+    match = models.ForeignKey(Matchdetails, on_delete=models.CASCADE) 
+    def __str__(self):
+        return f"Handball Match {self.handball_match_id}"
+class Carrom(models.Model):
+    carrom_match_id = models.AutoField(primary_key=True)
+    rounds = models.IntegerField()  
+    winner = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='carrom_winner') 
+    match = models.ForeignKey(Matchdetails, on_delete=models.CASCADE)  
+    def __str__(self):
+        return f"Carrom Match {self.carrom_match_id}"
+class Matchdetails(models.Model):
+    match_id = models.AutoField(primary_key=True)
+    date = models.DateField()
+    location = models.CharField(max_length=255)
+    event = models.ForeignKey('Event', on_delete=models.CASCADE)  # Reference to the event
+    
+    def __str__(self):
+        return f"Match {self.match_id} on {self.date} on {self.location}"
