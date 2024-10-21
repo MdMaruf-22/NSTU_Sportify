@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('sports.urls')),  # Include the sports app's API
+    path('admin/', admin.site.urls)
 ]
 

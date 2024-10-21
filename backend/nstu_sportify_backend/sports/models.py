@@ -63,7 +63,7 @@ class Matchdetails(models.Model):
 class Chess(models.Model):
     chess_match_id = models.AutoField(primary_key=True)
     moves = models.IntegerField()  
-    duration = models.CharField()  
+    duration = models.CharField(max_length=255)  
     match = models.ForeignKey(Matchdetails, on_delete=models.CASCADE)  
     def __str__(self):
         return f"Chess Match {self.chess_match_id}"
