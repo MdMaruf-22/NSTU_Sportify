@@ -29,7 +29,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 class CarromSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Carom
+        model = Carrom
         fields = '__all__'
 
 
