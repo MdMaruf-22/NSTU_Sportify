@@ -1,3 +1,4 @@
+from ast import Match
 from rest_framework import serializers
 from .models import *
 
@@ -25,7 +26,7 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = '__all__'
-        from rest_framework import serializers
+        
 
 class CarromSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,4 +55,30 @@ class FootballSerializer(serializers.ModelSerializer):
 class CricketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cricket
+        fields = '__all__'
+
+
+class MatchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Match
+        fields = '__all__'
+
+class StandingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Standing
+        fields = '__all__'
+
+class ResultSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Result
+        fields = '__all__'
+
+class LiveScoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Livescore
+        fields = '__all__'
+
+class NoticeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notice
         fields = '__all__'
